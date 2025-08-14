@@ -10,6 +10,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import SettingsPage from './pages/SettingsPage';
 import Navigation from './components/Navigation';
 import { UserProvider } from './context/UserContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   const [isOnboarded, setIsOnboarded] = useState(false);
@@ -35,31 +36,41 @@ function App() {
   };
 
   if (showLanding && !isOnboarded) {
-    return <LandingPage onGetStarted={handleGetStarted} />;
+    return (
+      <ThemeProvider>
+        <LandingPage onGetStarted={handleGetStarted} />
+      </ThemeProvider>
+    );
   }
 
   if (!isOnboarded) {
-    return <OnboardingFlow onComplete={handleOnboardingComplete} />;
+    return (
+      <ThemeProvider>
+        <OnboardingFlow onComplete={handleOnboardingComplete} />
+      </ThemeProvider>
+    );
   }
 
   return (
-    <UserProvider>
-      <Router>
-        <div className="min-h-screen bg-[#0E0E0E] text-[#F5F5F5]">
-          <Navigation />
-          <main className="pt-16">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/profile/:id?" element={<ProfilePage />} />
-              <Route path="/discovery" element={<DiscoveryPage />} />
-              <Route path="/communities" element={<CommunitiesPage />} />
-              <Route path="/post/:id" element={<PostDetailPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-            </Routes>
-          </main>
-        </div>
-      </Router>
-    </UserProvider>
+    <ThemeProvider>
+      <UserProvider>
+        <Router>
+          <div className="min-h-screen bg-white dark:bg-[#0E0E0E] text-gray-900 dark:text-[#F5F5F5] transition-colors duration-300">
+            <Navigation />
+            <main className="pt-16">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/profile/:id?" element={<ProfilePage />} />
+                <Route path="/discovery" element={<DiscoveryPage />} />
+                <Route path="/communities" element={<CommunitiesPage />} />
+                <Route path="/post/:id" element={<PostDetailPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+              </Routes>
+            </main>
+          </div>
+        </Router>
+      </UserProvider>
+    </ThemeProvider>
   );
 }
 

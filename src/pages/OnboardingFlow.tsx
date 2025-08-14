@@ -77,15 +77,15 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] text-[#F5F5F5] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-white dark:bg-[#0E0E0E] text-gray-900 dark:text-[#F5F5F5] flex items-center justify-center px-4 transition-colors duration-300">
       <div className="max-w-2xl w-full">
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-sm text-gray-400">Step {currentStep} of {totalSteps}</span>
-            <span className="text-sm text-gray-400">{Math.round((currentStep / totalSteps) * 100)}%</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Step {currentStep} of {totalSteps}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{Math.round((currentStep / totalSteps) * 100)}%</span>
           </div>
-          <div className="w-full bg-gray-800 rounded-full h-2">
+          <div className="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-2 transition-colors duration-300">
             <div
               className="bg-gradient-to-r from-purple-600 to-pink-600 h-2 rounded-full transition-all duration-500"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
@@ -94,14 +94,14 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
         </div>
 
         {/* Step Content */}
-        <div className="bg-[#181818] rounded-3xl p-8 border border-gray-800 shadow-2xl">
+        <div className="bg-gray-50 dark:bg-[#181818] rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-2xl transition-colors duration-300">
           {currentStep === 1 && (
             <div className="text-center">
               <User className="w-16 h-16 text-purple-400 mx-auto mb-6" />
               <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Let's Get Started
               </h2>
-              <p className="text-gray-400 mb-8">Tell us a bit about yourself</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-8">Tell us a bit about yourself</p>
               
               <div className="space-y-6 text-left">
                 <div>
@@ -110,7 +110,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
                     type="text"
                     value={profileData.name}
                     onChange={(e) => setProfileData(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-4 py-3 bg-[#0E0E0E] border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#0E0E0E] border border-gray-300 dark:border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -121,7 +121,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
                     type="text"
                     value={profileData.location}
                     onChange={(e) => setProfileData(prev => ({ ...prev, location: e.target.value }))}
-                    className="w-full px-4 py-3 bg-[#0E0E0E] border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#0E0E0E] border border-gray-300 dark:border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                     placeholder="City, State"
                   />
                 </div>
@@ -135,19 +135,19 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
               <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Your Taste Profile
               </h2>
-              <p className="text-gray-400 mb-8">Adjust the sliders to reflect your preferences</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-8">Adjust the sliders to reflect your preferences</p>
               
               <div className="space-y-8">
                 {preferenceCategories.map(category => (
                   <div key={category.key} className="text-left">
                     <div className="flex justify-between items-center mb-3">
                       <label className="text-sm font-medium">{category.label}</label>
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
                         {profileData.preferences[category.key] || 50}/100
                       </span>
                     </div>
                     <div className="flex items-center space-x-4">
-                      <span className="text-xs text-gray-500 w-16 text-left">{category.min}</span>
+                      <span className="text-xs text-gray-600 dark:text-gray-500 w-16 text-left">{category.min}</span>
                       <div className="flex-1">
                         <input
                           type="range"
@@ -155,10 +155,10 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
                           max="100"
                           value={profileData.preferences[category.key] || 50}
                           onChange={(e) => handlePreferenceChange(category.key, parseInt(e.target.value))}
-                          className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                          className="w-full h-2 bg-gray-300 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
                         />
                       </div>
-                      <span className="text-xs text-gray-500 w-16 text-right">{category.max}</span>
+                      <span className="text-xs text-gray-600 dark:text-gray-500 w-16 text-right">{category.max}</span>
                     </div>
                   </div>
                 ))}
@@ -172,7 +172,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
               <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Join Communities
               </h2>
-              <p className="text-gray-400 mb-8">Select communities that match your interests</p>
+              <p className="text-gray-500 dark:text-gray-400 mb-8">Select communities that match your interests</p>
               
               <div className="grid sm:grid-cols-2 gap-4">
                 {suggestedCommunities.map(community => (
@@ -182,7 +182,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
                     className={`relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                       profileData.interests.includes(community.name)
                         ? 'border-purple-500 bg-purple-500/10'
-                        : 'border-gray-700 hover:border-gray-600'
+                        : 'border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
                     }`}
                   >
                     <img
@@ -191,7 +191,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
                       className="w-full h-32 object-cover rounded-lg mb-3"
                     />
                     <h3 className="font-medium mb-1">{community.name}</h3>
-                    <p className="text-sm text-gray-400">{community.members.toLocaleString()} members</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{community.members.toLocaleString()} members</p>
                     
                     {profileData.interests.includes(community.name) && (
                       <div className="absolute top-2 right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
@@ -211,8 +211,8 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
               disabled={currentStep === 1}
               className={`flex items-center px-6 py-3 rounded-xl transition-all duration-300 ${
                 currentStep === 1
-                  ? 'opacity-50 cursor-not-allowed text-gray-500'
-                  : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                  ? 'opacity-50 cursor-not-allowed text-gray-400 dark:text-gray-500'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
@@ -225,7 +225,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
               className={`flex items-center px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 canProceed()
                   ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white transform hover:scale-105'
-                  : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                  : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
               }`}
             >
               {currentStep === totalSteps ? 'Complete Setup' : 'Next'}

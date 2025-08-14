@@ -69,7 +69,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   return (
     <article 
-      className="bg-[#181818] rounded-3xl border border-gray-800 hover:border-gray-700 transition-all duration-500 overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-purple-900/10 hover:-translate-y-1"
+      className="bg-white dark:bg-[#181818] rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-500 overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-purple-500/10 dark:hover:shadow-purple-900/10 hover:-translate-y-1"
       onClick={handleCardClick}
     >
       {/* Header */}
@@ -79,18 +79,18 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <img
               src={post.author.avatar}
               alt={post.author.name}
-              className="w-12 h-12 rounded-full ring-2 ring-gray-700 group-hover:ring-purple-500/50 transition-all duration-300"
+              className="w-12 h-12 rounded-full ring-2 ring-gray-300 dark:ring-gray-700 group-hover:ring-purple-500/50 transition-all duration-300"
             />
             <div>
-              <h3 className="font-semibold text-[#F5F5F5] group-hover:text-white transition-colors">
+              <h3 className="font-semibold text-gray-900 dark:text-[#F5F5F5] group-hover:text-gray-700 dark:group-hover:text-white transition-colors">
                 {post.author.name}
               </h3>
               <p className="text-sm text-purple-400">{post.author.specialty}</p>
             </div>
           </div>
-          <div className="flex items-center space-x-2 text-gray-400">
+          <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
             <span className="text-sm">{post.timestamp}</span>
-            <button className="p-2 hover:bg-gray-800 rounded-full transition-colors">
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -99,10 +99,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
       {/* Content */}
       <div className="px-6">
-        <h2 className="text-xl font-bold mb-3 text-[#F5F5F5] group-hover:text-white transition-colors">
+        <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-[#F5F5F5] group-hover:text-gray-700 dark:group-hover:text-white transition-colors">
           {post.content.title}
         </h2>
-        <p className="text-gray-300 mb-4 leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
           {post.content.description}
         </p>
       </div>
@@ -118,13 +118,13 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
       {/* Location and Rating */}
       <div className="px-6 mb-4 flex items-center justify-between">
-        <div className="flex items-center text-gray-400">
+        <div className="flex items-center text-gray-500 dark:text-gray-400">
           <MapPin className="w-4 h-4 mr-1" />
           <span className="text-sm">{post.content.location}</span>
         </div>
         <div className="flex items-center space-x-1">
           {renderStars(post.content.rating)}
-          <span className="text-sm text-gray-400 ml-2">{post.content.rating}</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">{post.content.rating}</span>
         </div>
       </div>
 
@@ -134,7 +134,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           {post.content.tags.map(tag => (
             <span
               key={tag}
-              className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full hover:bg-purple-800/30 hover:text-purple-300 transition-colors cursor-pointer"
+              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm rounded-full hover:bg-purple-100 dark:hover:bg-purple-800/30 hover:text-purple-600 dark:hover:text-purple-300 transition-colors cursor-pointer"
               onClick={(e) => e.stopPropagation()}
             >
               #{tag}
@@ -144,7 +144,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       </div>
 
       {/* Engagement Bar */}
-      <div className="px-6 py-4 border-t border-gray-800 bg-[#1a1a1a]">
+      <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[#1a1a1a] transition-colors duration-300">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <button
@@ -152,7 +152,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               className={`flex items-center space-x-2 transition-all duration-300 ${
                 isLiked
                   ? 'text-pink-500'
-                  : 'text-gray-400 hover:text-pink-400'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-pink-400'
               }`}
             >
               <Heart className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`} />
@@ -160,7 +160,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             </button>
             
             <button 
-              className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors"
+              className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 hover:text-blue-400 transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <MessageCircle className="w-5 h-5" />
@@ -168,7 +168,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             </button>
             
             <button 
-              className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors"
+              className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 hover:text-green-400 transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <Share2 className="w-5 h-5" />
@@ -181,7 +181,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             className={`transition-all duration-300 ${
               isBookmarked
                 ? 'text-yellow-500'
-                : 'text-gray-400 hover:text-yellow-400'
+                : 'text-gray-500 dark:text-gray-400 hover:text-yellow-400'
             }`}
           >
             <Bookmark className={`w-5 h-5 ${isBookmarked ? 'fill-current' : ''}`} />

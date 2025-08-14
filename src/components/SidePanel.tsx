@@ -58,17 +58,17 @@ const SidePanel: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Suggested Communities */}
-      <div className="bg-[#181818] rounded-2xl p-6 border border-gray-800">
+      <div className="bg-white dark:bg-[#181818] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Suggested Communities</h3>
-          <ArrowRight className="w-5 h-5 text-gray-400" />
+          <ArrowRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
         </div>
         
         <div className="space-y-4">
           {suggestedCommunities.map(community => (
             <div
               key={community.name}
-              className="flex items-start space-x-3 p-3 rounded-xl hover:bg-[#1a1a1a] transition-colors cursor-pointer group"
+              className="flex items-start space-x-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition-colors cursor-pointer group"
             >
               <img
                 src={community.image}
@@ -79,10 +79,10 @@ const SidePanel: React.FC = () => {
                 <h4 className="font-medium text-sm group-hover:text-purple-400 transition-colors">
                   {community.name}
                 </h4>
-                <p className="text-xs text-gray-400 mb-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
                   {community.members.toLocaleString()} members
                 </p>
-                <p className="text-xs text-gray-500 line-clamp-2">
+                <p className="text-xs text-gray-600 dark:text-gray-500 line-clamp-2">
                   {community.description}
                 </p>
               </div>
@@ -96,7 +96,7 @@ const SidePanel: React.FC = () => {
       </div>
 
       {/* Upcoming Events */}
-      <div className="bg-[#181818] rounded-2xl p-6 border border-gray-800">
+      <div className="bg-white dark:bg-[#181818] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold flex items-center">
             <Calendar className="w-5 h-5 mr-2 text-purple-400" />
@@ -108,12 +108,12 @@ const SidePanel: React.FC = () => {
           {upcomingEvents.map(event => (
             <div
               key={event.title}
-              className="p-3 rounded-xl bg-[#1a1a1a] border border-gray-700 hover:border-purple-500/50 transition-all cursor-pointer group"
+              className="p-3 rounded-xl bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 hover:border-purple-500/50 transition-all cursor-pointer group"
             >
               <h4 className="font-medium text-sm mb-2 group-hover:text-purple-400 transition-colors">
                 {event.title}
               </h4>
-              <div className="flex items-center justify-between text-xs text-gray-400">
+              <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                 <div className="flex items-center space-x-2">
                   <span>{event.date}</span>
                   <span>•</span>
@@ -124,7 +124,7 @@ const SidePanel: React.FC = () => {
                   <span>{event.attendees}</span>
                 </div>
               </div>
-              <div className="flex items-center mt-1 text-xs text-gray-500">
+              <div className="flex items-center mt-1 text-xs text-gray-600 dark:text-gray-500">
                 <MapPin className="w-3 h-3 mr-1" />
                 {event.location}
               </div>
@@ -134,7 +134,7 @@ const SidePanel: React.FC = () => {
       </div>
 
       {/* Trending Tags */}
-      <div className="bg-[#181818] rounded-2xl p-6 border border-gray-800">
+      <div className="bg-white dark:bg-[#181818] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="flex items-center mb-4">
           <TrendingUp className="w-5 h-5 mr-2 text-purple-400" />
           <h3 className="text-lg font-semibold">Trending Tags</h3>
@@ -144,15 +144,15 @@ const SidePanel: React.FC = () => {
           {trendingTags.map((item, index) => (
             <div
               key={item.tag}
-              className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[#1a1a1a] transition-colors cursor-pointer group"
+              className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition-colors cursor-pointer group"
             >
               <div className="flex items-center">
-                <span className="text-sm text-gray-400 mr-3">#{index + 1}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 mr-3">#{index + 1}</span>
                 <span className="text-sm font-medium group-hover:text-purple-400 transition-colors">
                   #{item.tag}
                 </span>
               </div>
-              <span className="text-xs text-gray-500">{item.count}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-500">{item.count}</span>
             </div>
           ))}
         </div>

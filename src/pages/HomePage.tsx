@@ -85,14 +85,14 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] text-[#F5F5F5]">
+    <div className="min-h-screen bg-white dark:bg-[#0E0E0E] text-gray-900 dark:text-[#F5F5F5] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Main Feed */}
           <div className="lg:col-span-3">
             {/* Tab Navigation */}
             <div className="mb-8">
-              <div className="flex space-x-1 bg-[#181818] rounded-2xl p-2 border border-gray-800">
+              <div className="flex space-x-1 bg-gray-50 dark:bg-[#181818] rounded-2xl p-2 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
                 {tabs.map(tab => (
                   <button
                     key={tab.key}
@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
                     className={`flex-1 px-6 py-4 rounded-xl transition-all duration-300 ${
                       activeTab === tab.key
                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
                     <div className="text-center">
@@ -121,7 +121,7 @@ const HomePage: React.FC = () => {
 
             {/* Load More */}
             <div className="text-center mt-12">
-              <button className="px-8 py-3 bg-[#181818] border border-gray-700 rounded-xl hover:border-purple-500 hover:bg-[#1a1a1a] transition-all duration-300 text-gray-300 hover:text-white">
+              <button className="px-8 py-3 bg-gray-50 dark:bg-[#181818] border border-gray-200 dark:border-gray-700 rounded-xl hover:border-purple-500 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-all duration-300 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 Load More Posts
               </button>
             </div>
